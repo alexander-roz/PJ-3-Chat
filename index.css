@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #2EC4B6;
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-color), #9EB1E9);
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
+.container {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1040px;
+  justify-content: space-between;
+}
+
+#userName {
+  background-color: #353f7b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  min-height: 50px;
+  height: max-content;
+  padding: 15px;
+  width: 120px;
+  word-break: break-all;
+  color: #eee;
+  text-align: center;
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#text_message {
+  height: 50px;
+  max-height: 110px;
+  width: 650px;
+  border: 3px solid rgb(53, 63, 123);
+  background-color: #b8c5eb;
+  color: #4b4949;
+  border-radius: 10px;
+  outline: none;
+  padding: 12px;
+}
+
+.button {
+  height: 30px;
+  width: 100px;
+  background-color: rgb(94, 126, 178);
+  border-radius: 10px;
+  color: aliceblue;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#chat_window {
+  height: 390px;
+  width: 900px;
+  border: 3px solid rgb(53, 63, 123);
+  background-color: #b8c5eb;
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow-y: scroll;
+}
+
+#chat_window::-webkit-scrollbar {
+  width: 10px;
+}
+
+#chat_window::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+}
+
+#chat_window::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #2EC4B6, #005bea);
+}
+
+#chat_messages {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.messages {
+  border-radius: 10px;
+  background-color: #5e7eb2;
+  padding: 10px;
+  margin: 10px;
+  align-self: flex-end;
+  color: aliceblue;
+  max-width: 500px;
+  word-break: break-all;
+}
+
+
+
+/*Адаптивная верстка: */
+
+@media (max-width: 1279.5px) {
+  .container {
+    display: block;
+    width: 900px;
+  }
+
+  #userName {
+    margin-bottom: 15px;
+    min-width: 120px;
+    width: max-content;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 735px;
+  }
+
+  #text_message {
+    width: 500px;
+  }
+
+  #chat_window {
+    width: 735px;
+  }
+}
+
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .container {
+    width: 570px;
+  }
+
+  #text_message {
+    width: 350px;
+  }
+
+  #chat_window {
+    width: 570px;
+  }
+}
+
+
+@media (min-width: 480px) and (max-width: 599px) {
+  .container {
+    width: 450px;
+  }
+
+  #text_message {
+    width: 230px;
+  }
+
+  #chat_window {
+    width: 450px;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .container {
+    width: 290px;
+  }
+
+  #text_message {
+    width: 160px;
+    max-height: 70px;
+  }
+
+  #chat_window {
+    width: 290px;
+    height: 300px;
+  }
+
+  .button {
+    width: 60px;
+  }
+}
