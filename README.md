@@ -19,5 +19,5 @@ back-end
 * Введенные данные авторизации и сообщений пользователя сохраняются в MySQL БД
 * При загрузке страницы index в форму чата загружаются ранее отправленные сообщения текущего пользователя
 * ![](chat/src/main/resources/img/autorisathion.png)
-* ![](chat/src/main/resources/img/loading messages.png)
+* ![](chat/src/main/resources/img/loading_messages.png)
 Использовано: Java, Spring Boot, MySQL, javascript, thymeleaf.
