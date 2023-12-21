@@ -2,7 +2,6 @@ package com.chat.services.impl;
 
 import com.chat.dto.Request;
 import com.chat.model.entities.MessageEntity;
-import com.chat.model.entities.UserEntity;
 import com.chat.model.repositories.MessageEntityRepository;
 import com.chat.services.MessageService;
 import org.springframework.stereotype.Service;

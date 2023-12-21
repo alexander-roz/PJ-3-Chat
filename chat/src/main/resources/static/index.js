@@ -27,10 +27,10 @@ websocket.onerror = function (evt) {
 
 //Вывод имени юзера на странице index.html
 function onPageLoad() {
-  let userName = sessionStorage.getItem("name");
-  document.getElementById("userName").innerHTML = "User: " + userName;
-  console.log(userName);
-  getList(userName);
+  let user = sessionStorage.getItem("name");
+  document.getElementById("userName").innerHTML = "User: " + user;
+  console.log(user);
+  getList(user);
 }
 
 //Отправка сообщения через кнопку:
@@ -73,8 +73,6 @@ function writeToScreen(message, flex_position = 'flex-end') {
   chat_window.scrollTop = chat_window.scrollHeight;
 }
 
-
-
 //Гео-локация:
 // Функция, выводящая текст об ошибке:
 const error = () => {
@@ -99,7 +97,8 @@ geo_loc.addEventListener('click', () => {
 });
 
 function addMessage(text){
-  let user = sessionStorage.getItem("userName");
+  let user = sessionStorage.getItem("name");
+  console.log("from addUser() " + user);
 
   fetch("/messages/", {
     method: "POST",

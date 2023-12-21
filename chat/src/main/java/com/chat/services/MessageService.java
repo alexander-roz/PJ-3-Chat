@@ -2,9 +2,7 @@ package com.chat.services;
 
 import com.chat.dto.Request;
 import com.chat.model.entities.MessageEntity;
-import com.chat.model.entities.UserEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface MessageService {

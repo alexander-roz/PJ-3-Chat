@@ -3,7 +3,6 @@ package com.chat.services;
 import com.chat.dto.Request;
 import com.chat.model.entities.UserEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface UserService {
@@ -17,5 +16,4 @@ public interface UserService {
 
     boolean checkTheUser(String name);
 
-//    UserEntity getUserByName(String name);
 }
