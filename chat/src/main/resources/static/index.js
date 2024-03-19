@@ -27,9 +27,10 @@ websocket.onerror = function (evt) {
 
 //Вывод имени юзера на странице index.html
 function onPageLoad() {
-  let userName = sessionStorage.getItem("name");
-  document.getElementById("userName").innerHTML = "User: " + userName;
-  console.log(userName);
+  let user = sessionStorage.getItem("name");
+  document.getElementById("userName").innerHTML = "User: " + user;
+  console.log(user);
+  getList(user);
 }
 
 //Отправка сообщения через кнопку:
@@ -45,10 +46,11 @@ text_message.addEventListener('keydown', function (e) {
 });
 
 function send() {
-  if (text_message.value != '') {
+  if (text_message.value !== '') {
     const message = text_message.value.replace(/\n/g, "<br>"); // сохраняем абзацы из text_message в окне чата
     writeToScreen("You write:<br> " + message);
     websocket.send(message);
+    addMessage(message);
     text_message.value = ''; // очистка поля text_message после отправки сообщения в чат
   }
 }
@@ -70,8 +72,6 @@ function writeToScreen(message, flex_position = 'flex-end') {
   chat_messages.innerHTML += p;
   chat_window.scrollTop = chat_window.scrollHeight;
 }
-
-
 
 //Гео-локация:
 // Функция, выводящая текст об ошибке:
@@ -95,4 +95,46 @@ geo_loc.addEventListener('click', () => {
     navigator.geolocation.getCurrentPosition(success, error);
   }
 });
+
+function addMessage(text){
+  let user = sessionStorage.getItem("name");
+  console.log("from addUser() " + user);
+
+  fetch("/messages/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      text: text,
+      user: user
+    }),
+
+  })
+      .then(response => response.json())
+      .catch(error => console.error(error));
+}
+
+function getList(userName){
+  console.log("sending to server user: " + userName);
+
+  fetch("/list/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      name: userName
+    })
+  })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("js got the list: " + response)
+        response.forEach((message) => {
+          writeToScreen(message);
+        });
+      })
+      .catch((error) => console.error(error));
+}
 
